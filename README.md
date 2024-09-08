@@ -34,5 +34,5 @@ Rename layers in the active composition or across the entire project.
 
 ---
 
-#### [Flicker or Blink](https://github.com/idlepickle/idp_Scriptlets/blob/main/Flicker%20or%20Blink.jsx)
-Adds a Flicker or Blink effect to selected layers. The Default is Flicker, hold SHIFT for Blink.
+#### [Blink or Flicker](https://github.com/idlepickle/idp_Scriptlets/blob/main/Blink%20or%20Flicker.jsx)
+Adds a Flicker or Blink effect to selected layers.
