@@ -14,6 +14,12 @@ A couple of ways, download the scriptlets you want, then either
 
 ## Scripts
 
+
+#### [Scale to Pixel](https://github.com/idlepickle/idp_Scriptlets/blob/main/Scale%20To%20Pixel.jsx)
+Quickly scale layers to a specific width or height without trying to calculate its percentage-equivalent.
+
+---
+
 #### [Change Comps BG](https://github.com/idlepickle/idp_Scriptlets/blob/main/Change%20Comps%20BG.jsx)
 Change background color of selected compositions in the Project window or across the entire project.
 
@@ -34,7 +40,7 @@ Duplicate selected layers a specified number of times.
 
 ---
 
-#### [Find & Rename](https://github.com/idlepickle/idp_Scriptlets/blob/main/Find%20%26%20Rename.jsx)
+#### [Rename Layers](https://github.com/idlepickle/idp_Scriptlets/blob/main/Rename%20Layers.jsx)
 Rename layers in the active composition or across the entire project.
 
 ---
