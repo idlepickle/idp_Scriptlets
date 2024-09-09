@@ -6,95 +6,143 @@
  * @author github.com/idlepickle
  * @version 1.0
  */
-function changeCompUI() {
-	var e = new Window("dialog", "Change Comp Settings"),
-		a = e.add("group");
-	a.orientation = "row", a.alignment = "left";
-	var o = a.add("checkbox", void 0, "Resolution");
-	o.value = !1;
-	var t = a.add("dropdownlist", void 0, ["Full", "Half", "Third", "Quarter"]);
-	t.selection = 0;
-	var n = e.add("group");
-	n.orientation = "row", n.alignment = "left";
-	var d = n.add("checkbox", void 0, "FPS");
-	d.value = !1;
-	var l = n.add("edittext", void 0, "25");
-	l.characters = 5;
-	var r = e.add("group");
-	r.orientation = "row", r.alignment = "left";
-	var i = r.add("checkbox", void 0, "Duration");
-	i.value = !1;
-	var v = r.add("dropdownlist", void 0, ["Change to", "Add on"]);
-	v.selection = 0;
-	var c = r.add("edittext", void 0, "5");
-	c.characters = 5;
-	var u = r.add("radiobutton", void 0, "sec"),
-		s = r.add("radiobutton", void 0, "fr");
-	u.value = !0, s.value = !1;
-	var g = e.add("checkbox", void 0, "Apply to all Comps in Project");
-	g.value = !1, g.alignment = "left";
-	var h = e.add("group");
-	h.alignment = "center";
-	var f = h.add("button", void 0, "OK"),
-		p = h.add("button", void 0, "Cancel");
+function cCSUI() {
+	var win = new Window("dialog", "Change Comp Settings");
+	var r_grp = win.add("group");
+	r_grp.orientation = "row";
+	r_grp.alignment = "left";
+	var cRes_cb = r_grp.add("checkbox", undefined, "Resolution");
+	cRes_cb.value = false;
+	var res_dd = r_grp.add("dropdownlist", undefined, ["Full", "Half", "Third", "Quarter"]);
+	res_dd.selection = 0;
+	var f_grp = win.add("group");
+	f_grp.orientation = "row";
+	f_grp.alignment = "left";
+	var cFps_cb = f_grp.add("checkbox", undefined, "FPS");
+	cFps_cb.value = false;
+	var fps_inp = f_grp.add("edittext", undefined, "25");
+	fps_inp.characters = 5;
+	var d_grp = win.add("group");
+	d_grp.orientation = "row";
+	d_grp.alignment = "left";
+	var cDur_cb = d_grp.add("checkbox", undefined, "Duration");
+	cDur_cb.value = false;
+	var durType_dd = d_grp.add("dropdownlist", undefined, ["Change to", "Add on"]);
+	durType_dd.selection = 0;
+	var dur_inp = d_grp.add("edittext", undefined, "5");
+	dur_inp.characters = 5;
+	var sec_rdo = d_grp.add("radiobutton", undefined, "sec");
+	var frames_rdo = d_grp.add("radiobutton", undefined, "fr");
+	sec_rdo.value = true;
+	frames_rdo.value = false;
+	var applyAll_cb = win.add("checkbox", undefined, "Apply to all Comps in Project");
+	applyAll_cb.value = false;
+	applyAll_cb.alignment = "left";
+	var btn_grp = win.add("group");
+	btn_grp.alignment = "center";
+	var ok_btn = btn_grp.add("button", undefined, "OK");
+	var cancel_btn = btn_grp.add("button", undefined, "Cancel");
 
-	function $() {
-		t.enabled = o.value, l.enabled = d.value, c.enabled = i.value, s.enabled = i.value, u.enabled = i.value, v.enabled = i.value
+	function rUI() {
+		res_dd.enabled = cRes_cb.value;
+		fps_inp.enabled = cFps_cb.value;
+		dur_inp.enabled = cDur_cb.value;
+		frames_rdo.enabled = cDur_cb.value;
+		sec_rdo.enabled = cDur_cb.value;
+		durType_dd.enabled = cDur_cb.value;
 	}
-	$(), o.onClick = $, d.onClick = $, i.onClick = $, f.onClick = function() {
-		var a, n = t.selection.text,
-			r = g.value,
-			u = parseFloat(l.text),
-			h = parseFloat(c.text),
-			f = s.value,
-			p = v.selection.text;
-		switch (n) {
+	rUI();
+	cRes_cb.onClick = rUI;
+	cFps_cb.onClick = rUI;
+	cDur_cb.onClick = rUI;
+	ok_btn.onClick = function() {
+		var sRes = res_dd.selection.text;
+		var applyAll = applyAll_cb.value;
+		var fps = parseFloat(fps_inp.text);
+		var duration = parseFloat(dur_inp.text);
+		var isFrames = frames_rdo.value;
+		var durType = durType_dd.selection.text;
+		var resolutionFactor;
+		switch (sRes) {
 			case "Full":
-			default:
-				a = [1, 1];
+				resolutionFactor = [1, 1];
 				break;
 			case "Half":
-				a = [2, 2];
+				resolutionFactor = [2, 2];
 				break;
 			case "Third":
-				a = [3, 3];
+				resolutionFactor = [3, 3];
 				break;
 			case "Quarter":
-				a = [4, 4]
+				resolutionFactor = [4, 4];
+				break;
+			default:
+				resolutionFactor = [1, 1];
 		}
-		if (!o.value && !d.value && !i.value) {
+		if (!cRes_cb.value && !cFps_cb.value && !cDur_cb.value) {
 			alert("Select at least one option to change.");
-			return
+			return;
 		}
-		changeCompSettings(o.value, a, d.value, u, i.value, h, f, p, r), e.close()
-	}, p.onClick = function() {
-		e.close()
-	}, e.center(), e.show()
+		cCS(cRes_cb.value, resolutionFactor, cFps_cb.value, fps, cDur_cb.value, duration, isFrames, durType, applyAll);
+		win.close();
+	};
+	cancel_btn.onClick = function() {
+		win.close();
+	};
+	win.center();
+	win.show();
 }
 
-function changeCompSettings(e, a, o, t, n, d, l, r, i) {
-	var v = app.project,
-		c = v.selection,
-		u = [];
-	if (i)
-		for (var s = 1; s <= v.numItems; s++) {
-			var g = v.item(s);
-			g instanceof CompItem && u.push(g)
-		} else if (c.length > 0)
-			for (var h = 0; h < c.length; h++) c[h] instanceof CompItem && u.push(c[h]);
-	if (0 === u.length) {
-		alert("No comp(s) selected.");
-		return
-	}
-	app.beginUndoGroup("Change Comps Settings");
-	for (var f = 0; f < u.length; f++) {
-		var p = u[f];
-		if (e && (p.resolutionFactor = a), o && !isNaN(t) && t > 0 && (p.frameRate = t), n && !isNaN(d) && d > 0) {
-			var $ = 0,
-				m = d;
-			l && (m = d / p.frameRate), $ = "Add on" === r ? p.duration + m : m, p.duration = $
+function cCS(changeRes, newRes, changeFps, fps, changeDur, duration, isFrames, durType, applyAll) {
+	var project = app.project;
+	var selectedComps = project.selection;
+	var compositions = [];
+	if (applyAll) {
+		for (var j = 1; j <= project.numItems; j++) {
+			var item = project.item(j);
+			if (item instanceof CompItem) {
+				compositions.push(item);
+			}
+		}
+	} else {
+		if (selectedComps.length > 0) {
+			for (var i = 0; i < selectedComps.length; i++) {
+				if (selectedComps[i] instanceof CompItem) {
+					compositions.push(selectedComps[i]);
+				}
+			}
 		}
 	}
-	app.endUndoGroup(), (e || o || n) && alert("Changes applied to " + u.length + " comp(s).")
+	if (compositions.length === 0) {
+		alert("No comp(s) selected.");
+		return;
+	}
+	app.beginUndoGroup("Change Comps Settings");
+	for (var k = 0; k < compositions.length; k++) {
+		var comp = compositions[k];
+		if (changeRes) {
+			comp.resolutionFactor = newRes;
+		}
+		if (changeFps && !isNaN(fps) && fps > 0) {
+			comp.frameRate = fps;
+		}
+		if (changeDur && !isNaN(duration) && duration > 0) {
+			var newDur = 0;
+			var durInSec = duration;
+			if (isFrames) {
+				durInSec = duration / comp.frameRate;
+			}
+			if (durType === "Add on") {
+				newDur = comp.duration + durInSec;
+			} else {
+				newDur = durInSec;
+			}
+			comp.duration = newDur;
+		}
+	}
+	app.endUndoGroup();
+	if (changeRes || changeFps || changeDur) {
+		alert("Changes applied to " + compositions.length + " comp(s).");
+	}
 }
-changeCompUI();
+cCSUI();
