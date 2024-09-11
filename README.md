@@ -5,6 +5,8 @@ Could be useful for someone else out there.
 
 Certain things may not work and I'm not liable if anything breaks, so run these at your own discretion.  
 
+If you find these useful, [buying me a coffee](https://buymeacoffee.com/coffeeguzzler) to fuel my day will be very much appreciated.
+
 ## Usage
 
 A couple of ways, download the scriptlets you want, then either  
