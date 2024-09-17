@@ -5,7 +5,6 @@ Could be useful for someone else out there.
 
 Certain things may not work and I'm not liable if anything breaks, so run these at your own discretion.  
 
-If you find these useful, [buying me a coffee](https://buymeacoffee.com/coffeeguzzler) to fuel my day will be very much appreciated.
 
 ## Usage
 
@@ -49,3 +48,8 @@ Rename layers in the active composition or across the entire project.
 
 #### [Blink or Flicker](https://github.com/idlepickle/idp_Scriptlets/blob/main/Blink%20or%20Flicker.jsx)
 Add a Flicker or Blink effect to selected layers.
+
+---
+
+### Support
+If you find these useful, [buying me a coffee](https://buymeacoffee.com/coffeeguzzler) ☕️ to fuel my day will be very much appreciated.
