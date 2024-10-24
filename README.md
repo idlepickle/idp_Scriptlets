@@ -27,7 +27,7 @@ Change background color of selected compositions in the Project window or across
 ---
 
 #### [Change Comps Settings](https://github.com/idlepickle/idp_Scriptlets/blob/main/Batch%20Comp%20Settings.jsx)
-Batch change compositions settings (Resolution, FPS and Duration).
+Batch change compositions settings (Background color, Resolution, FPS and Duration).
 
 ---
 
