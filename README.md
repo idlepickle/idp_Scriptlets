@@ -16,6 +16,11 @@ A couple of ways, download the scriptlets you want, then either
 ## Scripts
 
 
+#### [Batch Renamer](https://github.com/idlepickle/idp_Scriptlets/blob/main/Batch%20Renamer.jsx)
+Easily batch rename comps and layers.
+
+---
+
 #### [Scale to Pixel](https://github.com/idlepickle/idp_Scriptlets/blob/main/Scale%20To%20Pixel.jsx)
 Quickly scale layers to a specific width or height without trying to calculate its percentage-equivalent.
 
