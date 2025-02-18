@@ -5,11 +5,11 @@
  * @author github.com/idlepickle
  * @version 1.1
  */
-function addBlinkOrFlickerEffect(i, t, e, a, n, r) {
+function blinkorflicker(i, t, e, a, n, r) {
 	t ? (app.beginUndoGroup("Add Flickering Effect"), i.opacity.expression = "prob = " + r + "; opacity_norm = " + n + "; x = random(prob); if (x <= 1) opacity = random(" + a + ", " + n + "); else opacity = opacity_norm;") : (app.beginUndoGroup("Add Blinking Effect"), i.opacity.expression = "br = " + e + "; n = Math.sin(time * br); n < 0 ? " + a + " : " + n + ";"), app.endUndoGroup()
 }
 
-function showUI() {
+function showui() {
 	var i = new Window("dialog", "Blinking/Flickering Effect"),
 		t = i.add("checkbox", void 0, "Flicker Effect");
 	t.value = !1, i.add("statictext", void 0, "Blinks per second:");
@@ -69,8 +69,8 @@ function main() {
 		return
 	}
 	var t = i.selectedLayers,
-		e = showUI();
+		e = showui();
 	if (null !== e)
-		for (var a = 0; a < t.length; a++) addBlinkOrFlickerEffect(t[a], e.isFlicker, e.blinkRate, e.minOpacity, e.maxOpacity, e.probability)
+		for (var a = 0; a < t.length; a++) blinkorflicker(t[a], e.isFlicker, e.blinkRate, e.minOpacity, e.maxOpacity, e.probability)
 }
 main();
