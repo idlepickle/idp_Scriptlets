@@ -9,17 +9,17 @@
  * @version 1.2 - Added option to change Comp dimensions + FPS dropdown + bugfixes.
  */
 function showui() {
-	var e = new Window("dialog", "Batch Change Comp(s) Settings"),
+	var e = new Window("dialog", "Batch Change Comp Settings"),
 		a = e.add("group");
 	a.spacing = 4, a.orientation = "row", a.alignment = "left";
 	var t = a.add("checkbox", void 0, "BG Color #");
-	t.size = [80, 14], t.value = !1;
+	t.size = [90, 14], t.value = !1;
 	var o = a.add("edittext", void 0, "ffffff");
 	o.characters = 8;
 	var n = e.add("group");
 	n.spacing = 4, n.orientation = "row", n.alignment = "left";
 	var i = n.add("checkbox", void 0, "Dimensions");
-	i.size = [80, 14], i.value = !1;
+	i.size = [90, 14], i.value = !1;
 	var d = n.add("edittext", void 0, "1920");
 	d.characters = 6, n.add("statictext", void 0, "x");
 	var r = n.add("edittext", void 0, "1080");
@@ -27,13 +27,13 @@ function showui() {
 	var l = e.add("group");
 	l.spacing = 4, l.orientation = "row", l.alignment = "left";
 	var v = l.add("checkbox", void 0, "Resolution");
-	v.size = [80, 14], v.value = !1;
+	v.size = [90, 14], v.value = !1;
 	var c = l.add("dropdownlist", void 0, ["Full", "Half", "Third", "Quarter"]);
 	c.selection = 0;
 	var s = e.add("group");
 	s.spacing = 4, s.orientation = "row", s.alignment = "left";
 	var u = s.add("checkbox", void 0, "FPS");
-	u.size = [80, 14], u.value = !1;
+	u.size = [90, 14], u.value = !1;
 	var h = s.add("edittext", void 0, "25");
 	h.characters = 6;
 	var $ = s.add("dropdownlist", void 0, ["8", "12", "15", "23.976", "24", "25", "29.97", "30", "50", "59.94", "60", "120"]);
@@ -43,11 +43,11 @@ function showui() {
 	var f = e.add("group");
 	f.spacing = 4, f.orientation = "row", f.alignment = "left";
 	var g = f.add("checkbox", void 0, "Duration");
-	g.size = [80, 14], g.value = !1;
+	g.size = [90, 14], g.value = !1;
 	var p = f.add("dropdownlist", void 0, ["Change to", "Add on"]);
 	p.selection = 0;
 	var x = f.add("edittext", void 0, "5");
-	x.characters = 5;
+	x.characters = 4;
 	var b = f.add("dropdownlist", void 0, ["seconds", "frames"]);
 	b.selection = 0;
 	var _ = e.add("checkbox", void 0, "Apply to all Comps in Project");
@@ -102,6 +102,10 @@ function showui() {
 		}
 		if (u.value && (isNaN(m) || m <= 0)) {
 			alert("Invalid FPS value.");
+			return
+		}
+		if (h.value && (isNaN(m) || m <= 0)) {
+			alert("Invalid length.");
 			return
 		}
 		if (!t.value && !i.value && !v.value && !u.value && !g.value) {
