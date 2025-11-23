@@ -16,7 +16,7 @@ A couple of ways, download the scriptlets you want, then either
 ## Scripts
 
 
-####[F5](https://github.com/idlepickle/idp_Scriptlets/blob/main/F5_KBar.jsx)
+#### [F5](https://github.com/idlepickle/idp_Scriptlets/blob/main/F5_KBar.jsx)
 Remember that glorious F5/Shift-F5 function back in the good ol' days of Flash?
 Here's a very rudimentary implementation of that. Does not do recursive pre-comps.
 
